@@ -77,7 +77,9 @@ local function float(cmd)
   local dim = dimensions(config)
 
   function M.VimResized()
-    resize()
+    if M.win and vim.api.nvim_win_is_valid(M.win) then
+      resize()
+    end
   end
 
   M.buf = vim.api.nvim_create_buf(false, true)
